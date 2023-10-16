@@ -10,12 +10,17 @@ static int hf_csp_flags = -1;
 static int hf_csp_sequenceno = -1;
 static int hf_csp_initialip = -1;
 
+/* A sample #define of the minimum length (in bytes) of the protocol data.
+ * If data is received with fewer than this many bytes it is rejected by
+ * the current dissector. */
+#define CSP_MIN_LENGTH 4
+
 void
 proto_register_csp(void)
 {
     static hf_register_info hf[] = {
-        { &hf_csp_pdu_type,
-            { "CSP PDU Type", "csp.type",
+        { &hf_csp_priority,
+            { "CSP Priority", "csp.pri",
             FT_UINT8, BASE_DEC,
             NULL, 0x0,
             NULL, HFILL }
